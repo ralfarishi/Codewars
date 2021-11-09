@@ -6,8 +6,8 @@ mainmenu() {
       MAIN MENU
 =====================
 1) Biodata
-2) Percabangan
-3) Perulangan
+2) Kalkulator
+3) Grade Matkul
 4) Exit
 Masukan Pilihan [1-4] :  "
     read -r pil
@@ -28,8 +28,39 @@ Masukan Pilihan [1-4] :  "
         echo "Kelas saya $kelas"
         ;;
     2)
+        echo "============================"
+        echo "         KALKULATOR         "
+        echo "============================"
+        echo -n "Masukan bilangan pertama : "
+        read bil1
+        echo -n "Masukan bilangan kedua   : "
+        read bil2
+        echo "----------------------------"
+        echo "Masukkan Pilihan :"
+        echo "1. Pertambahan"
+        echo "2. Pengurangan"
+        echo "3. Perkalian"
+        echo "4. Pembagian"
+        echo -n "> "
+        read choice
+        # Switch Case to perform
+        # calculator operations
+        case $choice in
+        1)res=`echo $bil1 + $bil2 | bc`
+        ;;
+        2)res=`echo $bil1 - $bil2 | bc`
+        ;;
+        3)res=`echo $bil1 \* $bil2 | bc`
+        ;;
+        4)res=`echo "scale=2; $bil1 / $bil2" | bc`
+        ;;
+        esac
+        echo "Hasil : $res"
+
+        ;;
+    3)
         echo "========================="
-        echo "       PERCABANGAN       "
+        echo "          NILAI          "
         echo "========================="
         read -p "Masukan nilai : " nilai
         echo "-------------------------"
@@ -41,38 +72,21 @@ then
 fi
 if [ $nilai -le 69 ]
 then
-    echo "D"
+    echo "Mengulang matkul"
 elif  [ $nilai -le 79 ]
 then
-    echo "Selamat anda mendapat grade C"
+    echo "Nilai anda cukup"
 elif  [ $nilai -le 89 ]
 then
-    echo "Selamat anda mendapat grade B"
+    echo "Selamat nilai anda bagus"
 elif [ $nilai -le 100 ]
 then
-    echo "Selamat anda mendapat grade A"
+    echo "Selamat nilai anda sangat bagus"
 elif [ $nilai -gt 100 ]
 then
     echo "Please enter a number between 0 and 100"
     exit
-fi
-        ;;
-    3)
-        echo "================================"
-        echo "           PERULANGAN           "
-        echo "================================"
-        echo -n "Masukan tinggi segitiga  : "
-        read tinggi
-        echo "--------------------------------"
-        x=0
-        for ((i=1; i<=$tinggi; i++))
-        do
-            for ((j=1; j<=i; j++))
-            do
-                printf "$j "
-            done
-        printf "\n"
-        done
+fi  
         ;;
     0)
         echo "Bye bye."
