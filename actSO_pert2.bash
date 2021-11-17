@@ -7,7 +7,7 @@ mainmenu() {
 =====================
 1) Biodata
 2) Kalkulator
-3) Grade Matkul
+3) Grade Nilai
 4) Exit
 Masukan Pilihan [1-4] :  "
     read -r pil
@@ -56,7 +56,6 @@ Masukan Pilihan [1-4] :  "
         ;;
         esac
         echo "Hasil : $res"
-
         ;;
     3)
         echo "========================="
@@ -65,31 +64,31 @@ Masukan Pilihan [1-4] :  "
         read -p "Masukan nilai : " nilai
         echo "-------------------------"
 
-if [[ ! $nilai =~ ^[0-9]*$ ]]
-then
-    [[ $nilai =~ [Qq]uit ]] && exit
-    echo "Please enter a number between 0 and 100 or \"quit\" to exit" && exit
-fi
-if [ $nilai -le 69 ]
-then
-    echo "Mengulang matkul"
-elif  [ $nilai -le 79 ]
-then
-    echo "Nilai anda cukup"
-elif  [ $nilai -le 89 ]
-then
-    echo "Selamat nilai anda bagus"
-elif [ $nilai -le 100 ]
-then
-    echo "Selamat nilai anda sangat bagus"
-elif [ $nilai -gt 100 ]
-then
-    echo "Please enter a number between 0 and 100"
-    exit
-fi  
+        if [[ ! $nilai =~ ^[0-9]*$ ]]
+        then
+            [[ $nilai =~ [Qq]uit ]] && exit
+            echo "Please enter a number between 0 and 100 or \"quit\" to exit" && exit
+        fi
+        if [ $nilai -le 69 ]
+        then
+            echo "Mengulang matkul"
+        elif  [ $nilai -le 79 ]
+        then
+            echo "Nilai anda cukup"
+        elif  [ $nilai -le 89 ]
+        then
+            echo "Selamat nilai anda bagus"
+        elif [ $nilai -le 100 ]
+        then
+            echo "Selamat nilai anda sangat bagus"
+        elif [ $nilai -gt 100 ]
+        then
+            echo "Please enter a number between 0 and 100"
+            exit
+        fi  
         ;;
-    0)
-        echo "Bye bye."
+    4)
+        echo "Program selesai ..."
         exit 0
         ;;
     *)
